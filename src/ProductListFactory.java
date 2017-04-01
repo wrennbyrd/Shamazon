@@ -56,9 +56,6 @@ public class ProductListFactory {
         product10.name = "Cat Litter";
         product10.description = "Used cat litter from local animal shelter";
 
-
-
-
         listOfProducts.add(product1);
 
         listOfProducts.add(product2);
@@ -80,6 +77,5 @@ public class ProductListFactory {
         listOfProducts.add(product10);
 
         return listOfProducts;
-
     }
 }

@@ -8,6 +8,16 @@ public class Main {
 
     ArrayList<Product> productList = productListFactory.GenerateProductList();
 
+        for (Product currentProduct : productList){
+
+            String name = currentProduct.name;
+            int price = currentProduct.price;
+
+            System.out.println("$"+ price + " " + name + "\n");
+        }
+
 
     }
+
+
 }

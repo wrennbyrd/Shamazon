@@ -8,6 +8,10 @@ public class Main {
         ArrayList<Product> productList = productListFactory.GenerateProductList();
 
         ProductSelectScreen productSelectScreen = new ProductSelectScreen();
+
+        //probably return the cart eventually so we can do different things
         productSelectScreen.select(productList);
+
     }
+
 }

@@ -7,6 +7,7 @@ public class ProductListFactory {
         ArrayList<Product> listOfProducts = new ArrayList<Product>();
 
         Product product1 = new Product();
+
         product1.price = 10;
         product1.name = "bag";
         product1.description = "change purse";

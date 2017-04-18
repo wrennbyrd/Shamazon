@@ -4,33 +4,31 @@ import java.util.Scanner;
 public class ProductSelectScreen {
 
     Scanner sc = new Scanner(System.in);
-    Cart cart = new Cart();
-    boolean selectionInvalid = false;
-    boolean keepRunning = true;
+    boolean keepRunning;
 
-    public void select(ArrayList<Product> productList) {
+    Product product = null;
+
+
+    public Product select(ArrayList<Product> productList) {
+
+                keepRunning = true;
 
         while (keepRunning) {
-
-            Product productSelected;
-            productSelected = productSelection(sc, productList);
-
-            do {
-
-                 productSubMenu(productSelected);
-
-            } while (selectionInvalid);
+            product = productSelection(sc, productList);
         }
+        return product;
     }
 
     private Product productSelection(Scanner sc, ArrayList<Product> productList) {
         int number = 0;
 
-        System.out.println("0 - EXIT SHAMAZON\n");
-
         listEachProduct(productList, number);
 
-        System.out.println("Pick a number to see the products description. ");
+        if (product != null) {
+            System.out.println("You Have Currently Selected:\n" + product.name + " - " + product.description + "\n");
+        }
+
+        System.out.println("Pick a number to see a new products description. Or press 0 to exit product selection");
 
         Product product = new Product();
 
@@ -39,15 +37,10 @@ public class ProductSelectScreen {
 
         if (itemNumber == -1) {
             keepRunning = false;
-            System.out.println("Exiting Shamazon.");
+            System.out.println("Exiting Product Selection.");
         } else {
             product = productList.get(itemNumber);
-
-            String description = product.description;
-
-            System.out.println(description + "\n");
         }
-
         return product;
     }
 
@@ -62,26 +55,6 @@ public class ProductSelectScreen {
             System.out.println(number + " - $"+ price + " " + name + "\n");
         }
     }
-
-
-    private void productSubMenu(Product product) {
-
-        selectionInvalid = false;
-
-        System.out.println("Press 1 to add to cart or 2 to return to the menu");
-
-        int option = sc.nextInt();
-
-        if (option == 2) {
-            //do nothing which goes back to productSelection
-        } else if (option == 1) {
-            cart.addProduct(product);
-
-        } else if (option < 1 || option > 2) {
-            selectionInvalid = true;
-        }
-    }
-
 }
 
 

@@ -7,11 +7,10 @@ public class ProductSelectScreen {
     boolean keepRunning;
 
     Product product = null;
-
-
+    
     public Product select(ArrayList<Product> productList) {
 
-                keepRunning = true;
+        keepRunning = true;
 
         while (keepRunning) {
             product = productSelection(sc, productList);
@@ -20,9 +19,8 @@ public class ProductSelectScreen {
     }
 
     private Product productSelection(Scanner sc, ArrayList<Product> productList) {
-        int number = 0;
 
-        listEachProduct(productList, number);
+        listEachProduct(productList);
 
         if (product != null) {
             System.out.println("You Have Currently Selected:\n" + product.name + " - " + product.description + "\n");
@@ -30,7 +28,7 @@ public class ProductSelectScreen {
 
         System.out.println("Pick a number to see a new products description. Or press 0 to exit product selection");
 
-        Product product = new Product();
+        Product selectedProduct = null;
 
         int itemNumber = sc.nextInt();
         itemNumber = itemNumber - 1;
@@ -39,20 +37,23 @@ public class ProductSelectScreen {
             keepRunning = false;
             System.out.println("Exiting Product Selection.");
         } else {
-            product = productList.get(itemNumber);
+            selectedProduct = productList.get(itemNumber);
         }
-        return product;
+        return selectedProduct;
     }
 
-    private void listEachProduct(ArrayList<Product> productList, int number) {
+    private void listEachProduct(ArrayList<Product> productList) {
+
+        int numericalIndexForList = 0;
+
         for (Product currentProduct : productList){
 
             String name = currentProduct.name;
             int price = currentProduct.price;
 
-            number = number + 1;
+            numericalIndexForList = numericalIndexForList + 1;
 
-            System.out.println(number + " - $"+ price + " " + name + "\n");
+            System.out.println(numericalIndexForList + " - $"+ price + " " + name + "\n");
         }
     }
 }

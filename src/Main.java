@@ -5,8 +5,8 @@ public class Main {
 
     public static void main(String[] args) {
 
+        System.out.println("Starting Shamazon");
         Cart cart = new Cart();
-        boolean keepRunningShamazon = true;
 
         ProductListFactory productListFactory = new ProductListFactory();
         ArrayList<Product> productList = productListFactory.GenerateProductList();
@@ -20,12 +20,17 @@ public class Main {
 
         //todo write manual test cases for the product selection cases
 
+        boolean keepRunningShamazon = true;
+
         while (keepRunningShamazon) {
-            Product selectedProduct = productSelectScreen.select(productList);
-
-            cart.manageCart(selectedProduct);
-
             keepRunningShamazon = decisionToExitShamazon(keepRunningShamazon);
+
+            if (keepRunningShamazon){
+                Product selectedProduct = productSelectScreen.select(productList);
+
+                cart.manageCart(selectedProduct);
+            }
+
         }
 
     }

@@ -45,7 +45,7 @@ public class ProductListFactory {
         Product product8 = new Product();
         product8.price = 12;
         product8.name = "DVD";
-        product8.description = "Surprise DVD's which may contain which may have scratches and dings";
+        product8.description = "Surprise DVD's which may have scratches and dings";
 
         Product product9 = new Product();
         product9.price = 100;

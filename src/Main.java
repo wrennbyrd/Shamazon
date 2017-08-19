@@ -15,15 +15,7 @@ public class Main {
 
         //probably return the cart eventually so we can do different things
         //once cart is returned we can run product select and cart management here in a loop
-        //then this would be the loop that controls exiting the program, product selection
-        //loop would exit product selection instead
-
-        //todo write manual test cases for the product selection cases
-
-        boolean keepRunningShamazon = true;
-
-        while (keepRunningShamazon) {
-            keepRunningShamazon = decisionToExitShamazon(keepRunningShamazon);
+        //then tsionToExitShamazon(keepRunningShamazon);
 
             if (keepRunningShamazon){
                 Product selectedProduct = productSelectScreen.select(productList);

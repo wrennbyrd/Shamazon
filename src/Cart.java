@@ -57,7 +57,7 @@ public class Cart {
                 viewOrderTotal();
             } else if (option == 4) {
                 cartToBeSaved = true;
-                System.out.println("Cart saved!");
+                System.out.println("Cart saved!\n");
                 return  cartToBeSaved;
             } else {
                 keepRunning = false;

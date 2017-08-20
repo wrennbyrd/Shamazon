@@ -40,6 +40,7 @@ public class Application {
             int selection = sc.nextInt();
             if (selection == 5) {
                 keepRunningShamazon = false;
+                keepRunning = false;
                 System.out.println("Exiting Shamazon...");
             } else if (selection == 1) {
                 keepRunning = false;

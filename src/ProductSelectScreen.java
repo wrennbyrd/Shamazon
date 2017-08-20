@@ -4,24 +4,21 @@ import java.util.Scanner;
 public class ProductSelectScreen {
 
     Scanner sc = new Scanner(System.in);
-    Cart cart;
 
-    ProductSelectScreen(Cart cart) {
-        this.cart = cart;
+    public void select(ArrayList<Product> productList, Cart cart) {
+        productSelection(productList, cart);
     }
 
-    public void select(ArrayList<Product> productList) {
-        productSelection(sc, productList);
-    }
-
-    private void productSelection(Scanner sc, ArrayList<Product> productList) {
+    private void productSelection(ArrayList<Product> productList, Cart cart) {
 
         Product selectedProduct = null;
         boolean keepRunning = true;
 
         while (keepRunning) {
 
-            listEachProduct(productList);
+            if (selectedProduct == null) {
+                listEachProduct(productList);
+            }
 
             if (selectedProduct != null) {
                 System.out.println("You Have Currently Selected:\n" + selectedProduct.name + " - " + selectedProduct.description + "\n");

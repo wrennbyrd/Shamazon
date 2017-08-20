@@ -4,7 +4,7 @@ public class ProductListFactory {
 
     public ArrayList<Product> GenerateProductList(){
 
-        ArrayList<Product> listOfProducts = new ArrayList<Product>();
+        ArrayList<Product> listOfProducts = new ArrayList<>();
 
         Product product1 = new Product();
 

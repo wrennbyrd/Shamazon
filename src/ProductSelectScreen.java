@@ -4,42 +4,43 @@ import java.util.Scanner;
 public class ProductSelectScreen {
 
     Scanner sc = new Scanner(System.in);
-    boolean keepRunning;
+    Cart cart;
 
-    Product product = null;
-    
-    public Product select(ArrayList<Product> productList) {
-
-        keepRunning = true;
-
-        while (keepRunning) {
-            product = productSelection(sc, productList);
-        }
-        return product;
+    ProductSelectScreen(Cart cart) {
+        this.cart = cart;
     }
 
-    private Product productSelection(Scanner sc, ArrayList<Product> productList) {
+    public void select(ArrayList<Product> productList) {
+        productSelection(sc, productList);
+    }
 
-        listEachProduct(productList);
-
-        if (product != null) {
-            System.out.println("You Have Currently Selected:\n" + product.name + " - " + product.description + "\n");
-        }
-
-        System.out.println("Pick a number to see a new products description. Or press 0 to exit product selection");
+    private void productSelection(Scanner sc, ArrayList<Product> productList) {
 
         Product selectedProduct = null;
+        boolean keepRunning = true;
 
-        int itemNumber = sc.nextInt();
-        itemNumber = itemNumber - 1;
+        while (keepRunning) {
 
-        if (itemNumber == -1) {
-            keepRunning = false;
-            System.out.println("Exiting Product Selection.");
-        } else {
-            selectedProduct = productList.get(itemNumber);
+            listEachProduct(productList);
+
+            if (selectedProduct != null) {
+                System.out.println("You Have Currently Selected:\n" + selectedProduct.name + " - " + selectedProduct.description + "\n");
+                cart.manageCart(selectedProduct);
+                selectedProduct = null;
+            } else {
+                System.out.println("Pick a number to see a products description. Or press 0 to exit product selection");
+
+                int itemNumber = sc.nextInt();
+                itemNumber = itemNumber - 1;
+
+                if (itemNumber == -1) {
+                    keepRunning = false;
+                    System.out.println("Exiting Product Selection.\n");
+                } else {
+                    selectedProduct = productList.get(itemNumber);
+                }
+            }
         }
-        return selectedProduct;
     }
 
     private void listEachProduct(ArrayList<Product> productList) {
@@ -49,7 +50,7 @@ public class ProductSelectScreen {
         for (Product currentProduct : productList){
 
             String name = currentProduct.name;
-            int price = currentProduct.price;
+            double price = currentProduct.price;
 
             numericalIndexForList = numericalIndexForList + 1;
 

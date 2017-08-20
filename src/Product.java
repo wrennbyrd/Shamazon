@@ -1,7 +1,7 @@
 public class Product {
 
     String name;
-    int price;
+    double price;
     String description;
 
 }

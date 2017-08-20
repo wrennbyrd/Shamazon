@@ -3,6 +3,7 @@ import java.util.Scanner;
 
 public class Main {
 
+
     public static void main(String[] args) {
 
         System.out.println("Starting Shamazon");
@@ -11,29 +12,28 @@ public class Main {
         ProductListFactory productListFactory = new ProductListFactory();
         ArrayList<Product> productList = productListFactory.GenerateProductList();
 
-        ProductSelectScreen productSelectScreen = new ProductSelectScreen();
+        ProductSelectScreen productSelectScreen = new ProductSelectScreen(cart);
 
-        //probably return the cart eventually so we can do different things
-        //once cart is returned we can run product select and cart management here in a loop
-        //then tsionToExitShamazon(keepRunningShamazon);
+        boolean keepRunningShamazon = true;
+
+        while (keepRunningShamazon) {
+            keepRunningShamazon = mainMenu(keepRunningShamazon, cart);
 
             if (keepRunningShamazon){
-                Product selectedProduct = productSelectScreen.select(productList);
-
-                cart.manageCart(selectedProduct);
+                productSelectScreen.select(productList);
             }
-
         }
-
     }
 
-    private static boolean decisionToExitShamazon(boolean keepRunningShamazon) {
+    private static boolean mainMenu(boolean keepRunningShamazon, Cart cart) {
         Scanner sc = new Scanner(System.in);
-        System.out.println("Press 1 to go to product selection or 2 to exit Shamazon");
+        System.out.println("Press 1 to go to product selection or 2 to manage your cart or 3 to exit Shamazon");
         int selection = sc.nextInt();
-        if (selection == 2) {
+        if (selection == 3) {
             keepRunningShamazon = false;
             System.out.println("Exiting Shamazon...");
+        } else if (selection == 2) {
+            cart.manage();
         }
         return keepRunningShamazon;
     }

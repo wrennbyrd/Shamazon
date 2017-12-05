@@ -30,9 +30,7 @@ public class Main {
 
                 cart.manageCart(selectedProduct);
             }
-
         }
-
     }
 
     private static boolean decisionToExitShamazon(boolean keepRunningShamazon) {

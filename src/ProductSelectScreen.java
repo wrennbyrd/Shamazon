@@ -6,26 +6,26 @@ public class ProductSelectScreen {
     Scanner sc = new Scanner(System.in);
     boolean keepRunning;
 
-    Product product = null;
 
-    public Product select(ArrayList<Product> productList) {
+    Cart cart;
+
+
+    public void select(ArrayList<Product> productList, Cart cart) {
+
+        this.cart = cart;
 
         listEachProduct(productList);
 
         keepRunning = true;
 
         while (keepRunning) {
-            product = productSelection(sc, productList);
-            product = manageSelectedItem(product);
+            productSelectionMenu(sc, productList);
         }
-        return product;
     }
 
-    private Product productSelection(Scanner sc, ArrayList<Product> productList) {
+    private void productSelectionMenu(Scanner sc, ArrayList<Product> productList) {
 
         System.out.println("Pick a number to see a new products description. Or press 0 to exit product selection");
-
-        Product selectedProduct = null;
 
         int itemNumber = sc.nextInt();
         itemNumber = itemNumber - 1;
@@ -34,18 +34,18 @@ public class ProductSelectScreen {
             keepRunning = false;
             System.out.println("Exiting Product Selection.");
         } else {
-            selectedProduct = productList.get(itemNumber);
+            Product selectedProduct = productList.get(itemNumber);
+            manageSelectedItemMenu(selectedProduct);
+
         }
-        return selectedProduct;
     }
 
-    private Product manageSelectedItem(Product product)  {
+    private void manageSelectedItemMenu(Product product)  {
 
         System.out.println("You Have Currently Selected:\n" + product.name + " - " + product.description + "\n");
 
         System.out.println("Press 1 to add to cart or press 0 to exit product selection");
 
-        Product selectedProduct = null;
 
         int itemNumber = sc.nextInt();
         itemNumber = itemNumber - 1;
@@ -55,9 +55,8 @@ public class ProductSelectScreen {
             System.out.println("Exiting Product Selection.");
         } else if (itemNumber == 0) {
             keepRunning = false;
-            selectedProduct = product;
+            cart.addProduct(product);
         }
-        return selectedProduct;
     }
 
     private void listEachProduct(ArrayList<Product> productList) {

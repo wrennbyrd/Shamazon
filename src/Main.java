@@ -26,9 +26,9 @@ public class Main {
             keepRunningShamazon = decisionToExitShamazon(keepRunningShamazon);
 
             if (keepRunningShamazon){
-                Product selectedProduct = productSelectScreen.select(productList);
+                productSelectScreen.select(productList, cart);
 
-                cart.manageCart(selectedProduct);
+                //cart.manageCart(null);
             }
         }
     }

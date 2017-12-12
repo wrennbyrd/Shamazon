@@ -13,12 +13,10 @@ public class Main {
 
         ProductSelectScreen productSelectScreen = new ProductSelectScreen();
 
-        //probably return the cart eventually so we can do different things
-        //once cart is returned we can run product select and cart management here in a loop
-        //then this would be the loop that controls exiting the program, product selection
-        //loop would exit product selection instead
-
-        //todo write manual test cases for the product selection cases
+        compile error
+        //lets make ProductList its own type so it can have its display method inside itself
+        //lets restrict the selection in the item management menu to 1 and 0 and
+        //lets restrict the selection in the product selection to the size of the list
 
         boolean keepRunningShamazon = true;
 

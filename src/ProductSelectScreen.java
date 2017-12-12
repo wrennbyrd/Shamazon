@@ -5,10 +5,7 @@ public class ProductSelectScreen {
 
     Scanner sc = new Scanner(System.in);
     boolean keepRunning;
-
-
     Cart cart;
-
 
     public void select(ArrayList<Product> productList, Cart cart) {
 

@@ -10,12 +10,12 @@ public class Main {
 
         ProductListFactory productListFactory = new ProductListFactory();
         ArrayList<Product> productList = productListFactory.GenerateProductList();
+        ProductsForSale productsForSale = new ProductsForSale(productList);
+
 
         ProductSelectScreen productSelectScreen = new ProductSelectScreen();
 
-        compile error
-        //lets make ProductList its own type so it can have its display method inside itself
-        //lets restrict the selection in the item management menu to 1 and 0 and
+        //todo
         //lets restrict the selection in the product selection to the size of the list
 
         boolean keepRunningShamazon = true;
@@ -24,7 +24,7 @@ public class Main {
             keepRunningShamazon = decisionToExitShamazon(keepRunningShamazon);
 
             if (keepRunningShamazon){
-                productSelectScreen.select(productList, cart);
+                productSelectScreen.select(productsForSale, cart);
 
                 //cart.manageCart(null);
             }

@@ -4,7 +4,7 @@ public class ProductListFactory {
 
     public ArrayList<Product> GenerateProductList(){
 
-        ArrayList<Product> listOfProducts = new ArrayList<Product>();
+        ArrayList<Product> listOfProducts = new ArrayList<>();
 
         Product product1 = new Product();
 
@@ -30,7 +30,7 @@ public class ProductListFactory {
         Product product5 = new Product();
         product5.price = 2;
         product5.name = "Dog Toy";
-        product5.description = "Slighly used dog toys with sqeakers missing";
+        product5.description = "Slightly used dog toys with sqeakers missing";
 
         Product product6 = new Product();
         product6.price = 8;

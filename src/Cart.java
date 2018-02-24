@@ -3,10 +3,6 @@ import java.util.Scanner;
 
 public class Cart {
 
-    //total
-    //taxes
-    //shipping
-
     ArrayList<Product> productsInCart = new ArrayList<>();
     Scanner sc = new Scanner(System.in);
 

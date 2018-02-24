@@ -1,4 +1,3 @@
-import java.util.ArrayList;
 import java.util.Scanner;
 
 public class ProductSelectScreen {
@@ -7,31 +6,36 @@ public class ProductSelectScreen {
     boolean keepRunning;
     Cart cart;
 
-    public void select(ArrayList<Product> productList, Cart cart) {
+    public void select(ProductsForSale productsForSale, Cart cart) {
 
         this.cart = cart;
 
-        listEachProduct(productList);
+        productsForSale.listEachProduct();
 
         keepRunning = true;
 
         while (keepRunning) {
-            productSelectionMenu(sc, productList);
+            productSelectionMenu(sc, productsForSale);
         }
     }
 
-    private void productSelectionMenu(Scanner sc, ArrayList<Product> productList) {
+    private void productSelectionMenu(Scanner sc, ProductsForSale productListForSale) {
 
         System.out.println("Pick a number to see a new products description. Or press 0 to exit product selection");
 
         int itemNumber = sc.nextInt();
+
+        if (itemNumber > productListForSale.products.size() || itemNumber < 0){
+            return;
+        }
+
         itemNumber = itemNumber - 1;
 
         if (itemNumber == -1) {
             keepRunning = false;
             System.out.println("Exiting Product Selection.");
         } else {
-            Product selectedProduct = productList.get(itemNumber);
+            Product selectedProduct = productListForSale.products.get(itemNumber);
             manageSelectedItemMenu(selectedProduct);
 
         }
@@ -41,35 +45,29 @@ public class ProductSelectScreen {
 
         System.out.println("You Have Currently Selected:\n" + product.name + " - " + product.description + "\n");
 
-        System.out.println("Press 1 to add to cart or press 0 to exit product selection");
+        Boolean keepRunningSelectedItem = true;
+
+        while (keepRunningSelectedItem) {
+            System.out.println("Press 1 to add to cart or press 0 to exit product selection");
 
 
-        int itemNumber = sc.nextInt();
-        itemNumber = itemNumber - 1;
+            int itemNumber = sc.nextInt();
+            itemNumber = itemNumber - 1;
 
-        if (itemNumber == -1) {
-            keepRunning = false;
-            System.out.println("Exiting Product Selection.");
-        } else if (itemNumber == 0) {
-            keepRunning = false;
-            cart.addProduct(product);
+            if (itemNumber == -1) {
+                keepRunning = false;
+                keepRunningSelectedItem = false;
+
+                System.out.println("Exiting Product Selection.");
+            } else if (itemNumber == 0) {
+                keepRunning = false;
+                keepRunningSelectedItem = false;
+                cart.addProduct(product);
+            }
         }
+
     }
 
-    private void listEachProduct(ArrayList<Product> productList) {
-
-        int numericalIndexForList = 0;
-
-        for (Product currentProduct : productList){
-
-            String name = currentProduct.name;
-            int price = currentProduct.price;
-
-            numericalIndexForList = numericalIndexForList + 1;
-
-            System.out.println(numericalIndexForList + " - $"+ price + " " + name + "\n");
-        }
-    }
 }
 
 

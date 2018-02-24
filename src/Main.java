@@ -12,11 +12,7 @@ public class Main {
         ArrayList<Product> productList = productListFactory.GenerateProductList();
         ProductsForSale productsForSale = new ProductsForSale(productList);
 
-
         ProductSelectScreen productSelectScreen = new ProductSelectScreen();
-
-        //todo
-        //lets restrict the selection in the product selection to the size of the list
 
         boolean keepRunningShamazon = true;
 
@@ -26,6 +22,7 @@ public class Main {
             if (keepRunningShamazon){
                 productSelectScreen.select(productsForSale, cart);
 
+                //todo
                 //cart.manageCart(null);
             }
         }

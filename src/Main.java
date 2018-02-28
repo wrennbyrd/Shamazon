@@ -16,27 +16,24 @@ public class Main {
 
         boolean keepRunningShamazon = true;
 
-        while (keepRunningShamazon) {
-            keepRunningShamazon = decisionToExitShamazon(keepRunningShamazon);
+        Scanner sc = new Scanner(System.in);
 
-            if (keepRunningShamazon){
+        while (keepRunningShamazon) {
+
+            System.out.println("Press 1 to go to product selection, 2 manage cart, and 3 to exit Shamazon");
+            int selection = sc.nextInt();
+
+            if (selection == 1){
                 productSelectScreen.select(productsForSale, cart);
 
-                //todo
-                //cart.manageCart(null);
+            } else if (selection == 2) {
+                cart.manageCart();
+
+            } else {
+                keepRunningShamazon = false;
+                System.out.println("Exiting Shamazon...");
             }
         }
-    }
-
-    private static boolean decisionToExitShamazon(boolean keepRunningShamazon) {
-        Scanner sc = new Scanner(System.in);
-        System.out.println("Press 1 to go to product selection or 2 to exit Shamazon");
-        int selection = sc.nextInt();
-        if (selection == 2) {
-            keepRunningShamazon = false;
-            System.out.println("Exiting Shamazon...");
-        }
-        return keepRunningShamazon;
     }
 
 }

@@ -10,25 +10,37 @@ public class Cart {
         productsInCart.add(selectedItem);
     }
 
-    public void manageCart(Product productSelected) {
+    public void manageCart() {
 
-        boolean selectionInvalid = false;
+        boolean keepRunning = true;
 
-        do {
+        while (keepRunning){
 
-            System.out.println("Press 1 to add to cart or 2 to return to the menu");
+            System.out.println("Press 1 to view items in cart and 2 to return to the main menu");
 
             int option = sc.nextInt();
 
-            if (option == 2) {
-                //do nothing which goes back to productSelection
-            } else if (option == 1) {
-                this.addProduct(productSelected);
+            if (option == 1) {
+                printAllItems();
+            } else if (option == 2) {
+                keepRunning = false;
+                System.out.println("returning to main menu \n");
+            }
+        }
+    }
+            private void printAllItems(){
 
-            } else if (option < 1 || option > 2) {
-                selectionInvalid = true;
+                for (Product product : productsInCart){
+                    String name = product.name;
+                    int price = product.price;
+                    String description = product.description;
+
+                    System.out.println("$" + price + " - " + name);
+                    System.out.println(description + "\n");
+                }
+
+
+
             }
 
-        } while (selectionInvalid);
-    }
 }
